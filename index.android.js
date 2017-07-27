@@ -18,14 +18,11 @@ export default class automacaoapp extends Component {
 
   handlePress(action) {
     if (action === "ligar") {
-      setTimeout(() => {
-        this.handlePress("desligar");
-      }, parseInt(this.state.time) * 1000 * 60);
-      fetch("http://179.55.228.114/LED=ON");
+      fetch("http://191.165.220.102/LED=ON");
     }
 
     if (action === "desligar") {
-      fetch("http://179.55.228.114/LED=OFF");
+      fetch("http://191.165.220.102/LED=OFF");
     }
   }
 
@@ -46,6 +43,7 @@ export default class automacaoapp extends Component {
         <View>
           {this.renderHello()}
         </View>
+
         <Button
           large
           raised={true}
@@ -63,25 +61,6 @@ export default class automacaoapp extends Component {
           icon={{ name: "power-off", type: "font-awesome" }}
           title="Desligar"
         />
-
-        <View style={styles.footer}>
-          <Text>
-            {`Desligar em `}
-            <TextInput
-              style={{
-                height: 40,
-                textAlign: "center",
-                width: 50,
-                borderColor: "gray",
-                borderWidth: 1
-              }}
-              keyboardType={`numeric`}
-              onChangeText={time => this.setState({ time })}
-              value={this.state.time}
-            />
-            {` minutos`}
-          </Text>
-        </View>
       </View>
     );
   }
